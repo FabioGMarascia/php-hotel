@@ -39,9 +39,10 @@ $hotels = [
 
 ];
 
-
 $parking = $_GET["parking"];
-$vote = $_GET["vote"]
+
+$vote = $_GET["vote"];
+
 ?>
 
 <!DOCTYPE html>
@@ -58,8 +59,46 @@ $vote = $_GET["vote"]
 </head>
 
 <body>
+    <div class="row justify-content-center mt-5">
+        <div class="col-5 px-0 text-center">
 
-    <div class="row mx-0 justify-content-center">
+            <h1 class="text-warning display-3 fw-bold text-center">FORM</h1>
+
+            <form action="" method="GET">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>PARKING</h2>
+
+                        <select name="parking" class="form-select h-50" aria-label="Default select example">
+                            <option value="0">Select parking options</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                            <option value="3">ALL</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+                        <h2>VOTE</h2>
+
+                        <select name="vote" class="form-select h-50" aria-label="Default select example">
+                            <option value="0">Select vote options</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn bg-warning fw-bold mt-4">SUBMIT</button>
+            </form>
+
+
+        </div>
+    </div>
+
+    <div class="row mx-0 justify-content-center mt-5">
         <div class="col-5 px-0 text-center">
             <h1 class="text-warning display-3 fw-bold text-center">HOTELS</h1>
 
@@ -76,111 +115,31 @@ $vote = $_GET["vote"]
 
                 <tbody>
 
-                    <tr>
-                        <?php
-                        foreach ($hotels[0] as $hotel) {
-                            if ($parking == 1 && !empty($hotels[0]["parking"]) && $hotels[0]["vote"] >= $vote) {
+                    <?php foreach ($hotels as $hotel) { ?>
 
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 2 && empty($hotels[0]["parking"]) && $hotels[0]["vote"] >= $vote) {
+                        <tr>
+                            <?php
+                            foreach ($hotel as $value) {
+                                if ($parking == 1 && !empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
 
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 3 && $hotels[0]["vote"] >= $vote) {
+                                    echo "<td>" . $value . "</td>";
+                                } elseif ($parking == 2 && empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
 
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == "0" && $hotels[0]["vote"] >= $vote) {
+                                    echo "<td>" . $value . "</td>";
+                                } elseif ($parking == 3 && $hotel["vote"] >= $vote) {
 
-                                echo "<td>" . $hotel . "</td>";
+                                    echo "<td>" . $value . "</td>";
+                                } elseif ($parking == "0" && $hotel["vote"] >= $vote) {
+
+                                    echo "<td>" . $value . "</td>";
+                                }
                             }
-                        }
-                        ?>
-                    </tr>
+                            ?>
+                        </tr>
 
-                    <tr>
-                        <?php
-                        foreach ($hotels[1] as $hotel) {
-                            if ($parking == 1 && !empty($hotels[1]["parking"]) && $hotels[1]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 2 && empty($hotels[1]["parking"]) && $hotels[1]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 3 && $hotels[1]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == "0" && $hotels[1]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            }
-                        }
-                        ?>
-                    </tr>
-
-                    <tr>
-                        <?php
-                        foreach ($hotels[2] as $hotel) {
-                            if ($parking == 1 && !empty($hotels[2]["parking"]) && $hotels[2]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 2 && empty($hotels[2]["parking"]) && $hotels[2]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 3 && $hotels[2]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == "0" && $hotels[2]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            }
-                        }
-                        ?>
-                    </tr>
-
-                    <tr>
-                        <?php
-
-                        foreach ($hotels[3] as $hotel) {
-                            if ($parking == 1 && !empty($hotels[3]["parking"]) && $hotels[3]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 2 && empty($hotels[3]["parking"]) && $hotels[3]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 3 && $hotels[3]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == "0" && $hotels[3]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            }
-                        }
-                        ?>
-                    </tr>
-
-                    <tr>
-                        <?php
-
-                        foreach ($hotels[4] as $hotel) {
-                            if ($parking == 1 && !empty($hotels[4]["parking"]) && $hotels[4]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 2 && empty($hotels[4]["parking"]) && $hotels[4]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == 3 && $hotels[4]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            } elseif ($parking == "0" && $hotels[4]["vote"] >= $vote) {
-
-                                echo "<td>" . $hotel . "</td>";
-                            }
-                        }
-                        ?>
-                    </tr>
+                    <?php } ?>
 
                 </tbody>
-
-
 
             </table>
 
