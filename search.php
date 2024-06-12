@@ -22,8 +22,9 @@
                 <div class="row">
                     <div class="col-6">
                         <h2>PARKING</h2>
+
                         <select name="parking" class="form-select h-50" aria-label="Default select example">
-                            <option value="0">Open this select menu</option>
+                            <option value="0">Select parking options</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
                             <option value="3">ALL</option>
@@ -32,7 +33,15 @@
 
                     <div class="col-6">
                         <h2>VOTE</h2>
-                        <input name="vote" type="text" placeholder="1 to 5" class="input-group h-50">
+
+                        <select name="vote" class="form-select h-50" aria-label="Default select example">
+                            <option value="0">Select vote options</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
                 </div>
 
