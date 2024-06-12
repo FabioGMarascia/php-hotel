@@ -39,9 +39,16 @@ $hotels = [
 
 ];
 
-$parking = $_GET["parking"];
+if (isset($_GET["parking"])) {
 
-$vote = $_GET["vote"];
+    $parking = $_GET["parking"];
+}
+
+
+if (isset($_GET["vote"])) {
+    $vote = $_GET["vote"];
+}
+
 
 ?>
 
@@ -115,29 +122,34 @@ $vote = $_GET["vote"];
 
                 <tbody>
 
-                    <?php foreach ($hotels as $hotel) { ?>
+                    <?php
+                    if (isset($_GET["parking"]) || isset($_GET["vote"])) {
 
-                        <tr>
-                            <?php
-                            foreach ($hotel as $value) {
-                                if ($parking == 1 && !empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
 
-                                    echo "<td>" . $value . "</td>";
-                                } elseif ($parking == 2 && empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
+                        foreach ($hotels as $hotel) { ?>
 
-                                    echo "<td>" . $value . "</td>";
-                                } elseif ($parking == 3 && $hotel["vote"] >= $vote) {
+                            <tr>
+                                <?php
+                                foreach ($hotel as $value) {
+                                    if ($parking == 1 && !empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
 
-                                    echo "<td>" . $value . "</td>";
-                                } elseif ($parking == "0" && $hotel["vote"] >= $vote) {
+                                        echo "<td>" . $value . "</td>";
+                                    } elseif ($parking == 2 && empty($hotel["parking"]) && $hotel["vote"] >= $vote) {
 
-                                    echo "<td>" . $value . "</td>";
+                                        echo "<td>" . $value . "</td>";
+                                    } elseif ($parking == 3 && $hotel["vote"] >= $vote) {
+
+                                        echo "<td>" . $value . "</td>";
+                                    } elseif ($parking == "0" && $hotel["vote"] >= $vote) {
+
+                                        echo "<td>" . $value . "</td>";
+                                    }
                                 }
-                            }
-                            ?>
-                        </tr>
+                                ?>
+                            </tr>
 
-                    <?php } ?>
+                    <?php }
+                    } ?>
 
                 </tbody>
 
